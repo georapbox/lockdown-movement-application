@@ -34,7 +34,6 @@
     }
   ],
   "start_url": "/?homescreen=1",
-  "scope": "/lockdown-movement-application/",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "display": "standalone"
