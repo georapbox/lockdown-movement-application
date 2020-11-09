@@ -5,9 +5,10 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
-        `https://georapbox.github.io/lockdown-movement-application/index.html`,
-        `https://georapbox.github.io/lockdown-movement-application/styles/main.css`,
-        `https://georapbox.github.io/lockdown-movement-application/scripts/main.js`
+        './',
+        './index.html',
+        './styles/main.css',
+        './scripts/main.js'
       ])
         .then(() => self.skipWaiting())
         .catch(err => console.error(err));
