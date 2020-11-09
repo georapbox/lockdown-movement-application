@@ -6,64 +6,9 @@
   var fullName = form.elements['fullName'];
   var address = form.elements['address'];
   var reason = form.elements['reason'];
-  var send = document.getElementById('send');
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  var isAndroid = userAgent.match(/Android/i);
-  var isIOS = userAgent.match(/iPad/i) || userAgent.match(/iPhone/i) || userAgent.match(/iPod/i);
-
-  function debounce(func, wait, immediate) {
-    var timerId = null;
-
-    if (typeof func !== 'function') {
-      throw new TypeError('Expected a function for first argument');
-    }
-
-    return function debounced() {
-      var context = this;
-      var args = arguments;
-      clearTimeout(timerId);
-
-      if (immediate && !timerId) {
-        func.apply(context, args);
-      }
-
-      timerId = setTimeout(function () {
-        timerId = null;
-        if (!immediate) func.apply(context, args);
-      }, wait);
-    };
-  }
-
-  function onInput(evt) {
-    console.log(evt);
-    try {
-      localStorage.setItem('fullName', fullName.value);
-      localStorage.setItem('address', address.value);
-    } catch (err) {
-      // fail silently
-    }
-
-    var smsPath = (function () {
-      if (isAndroid) {
-        return 'sms://' + SMS_NUMBER + '/?body=';
-      } else if (isIOS) {
-        return 'sms://' + SMS_NUMBER + '/&body=';
-      } else {
-        return '';
-      }
-    }());
-
-    if (!smsPath) {
-      return;
-    }
-
-    var smsBody = encodeURIComponent(reason.value + ' ' + fullName.value + ' ' + address.value);
-    var link = smsPath + smsBody;
-
-    send.href = link;
-  }
-
-  var onInputDebounced = debounce(onInput, 250);
+  var isAndroid = /android/i.test(userAgent);
+  var isIOS = /iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
   try {
     fullName.value = localStorage.getItem('fullName');
@@ -72,12 +17,38 @@
     // fail silently
   }
 
-  form.addEventListener('input', onInputDebounced);
+  form.addEventListener('submit', function onSubmit (evt) {
+    evt.preventDefault();
 
-  send.addEventListener('click', function (evt) {
     if (!fullName.value || !address.value || !reason.value) {
-      evt.preventDefault();
       return alert('Όλα τα πεδία είναι υποχρεωτικά.');
+    }
+
+    if (!isAndroid && !isIOS) {
+      return alert('Η εφαρμογή δουλεύει μόνο σε κινητά τηλέφωνα Android και iOS.');
+    }
+
+    var prefix = isAndroid ? '?' : '&';
+    var smsPath = 'sms://' + SMS_NUMBER + '/' + prefix + 'body=';
+    var smsBody = encodeURIComponent(reason.value + ' ' + fullName.value + ' ' + address.value);
+    var link = smsPath + smsBody;
+    var anchor = document.createElement('a');
+
+    anchor.href = link;
+    anchor.click();
+    anchor = null;
+  });
+
+  form.addEventListener('change', function onChange (evt) {
+    if (evt.srcElement && evt.srcElement.name === 'reason') {
+      return;
+    }
+
+    try {
+      localStorage.setItem('fullName', fullName.value);
+      localStorage.setItem('address', address.value);
+    } catch (err) {
+      // fail silently
     }
   });
 
