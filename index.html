@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Αίτηση Κίνησης</title>
+  <link rel="shortcut icon" href="favicon-32.png?v=1.0.0">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header>
+    <h1>Αίτηση Κίνησης</h1>
+  </header>
+
+  <section>
+    <form name="application-form" action="/" method="POST">
+      <div class="form-group">
+        <input class="form-control" type="text" name="fullName" placeholder="Ονοματεπώνυμο" />
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" type="text" name="address" placeholder="Διεύθυνση κατοικίας" />
+      </div>
+
+      <ul class="list-group">
+        <li>
+          <input type="radio" name="reason" value="1" id="reason-1">
+          <label for="reason-1">
+            <span class="label-title">Β1 - Φαρμακείο - γιατρός</span>
+            Μετάβαση σε φαρμακείο ή επίσκεψη στον γιατρό, εφόσον αυτό συνιστάται μετά από σχετική επικοινωνία.
+          </label>
+        </li>
+
+        <li>
+          <input type="radio" name="reason" value="2" id="reason-2">
+          <label for="reason-2">
+            <span class="label-title">Β2 - Προμήθεια αγαθών πρώτης ανάγκης</span>
+            Μετάβαση σε εν λειτουργία κατάστημα προμηθειών αγαθών πρώτης ανάγκης, όπου δεν είναι δυνατή η αποστολή τους.
+          </label>
+        </li>
+
+        <li>
+          <input type="radio" name="reason" value="3" id="reason-3">
+          <label for="reason-3">
+            <span class="label-title">Β3 - Τράπεζα</span>
+            Μετάβαση στην τράπεζα, στο μέτρο που δεν είναι δυνατή η ηλεκτρονική συναλλαγή.
+          </label>
+        </li>
+
+        <li>
+          <input type="radio" name="reason" value="4" id="reason-4">
+          <label for="reason-4">
+            <span class="label-title">Β4 - Παροχή βοήθειας</span>
+            Κίνηση για παροχή βοήθειας σε ανθρώπους που βρίσκονται σε ανάγκη.
+          </label>
+        </li>
+
+        <li>
+          <input type="radio" name="reason" value="5" id="reason-5">
+          <label for="reason-5">
+            <span class="label-title">Β5 - Μετάβαση σε τελετή</span>
+            Μετάβαση σε τελετή (π.χ. κηδεία, γάμος, βάφτιση) υπό τους όρους που προβλέπει ο νόμος ή μετάβαση διαζευγμένων γονέων ή γονέων που τελούν σε διάσταση που είναι αναγκαία για τη διασφάλιση της επικοινωνίας γονέων και τέκνων, σύμφωνα με τις κείμενες διατάξεις.
+          </label>
+        </li>
+
+        <li>
+          <input type="radio" name="reason" value="6" id="reason-6">
+          <label for="reason-6">
+            <span class="label-title">Β6 - Σωματική άσκηση - κατοικίδιο ζώο</span>
+            Σύντομη μετακίνηση, κοντά στην κατοικία μου, για ατομική σωματική άσκηση (εξαιρείται οποιαδήποτε συλλογική αθλητική δραστηριότητα) ή για τις ανάγκες κατοικιδίου ζώου.
+          </label>
+        </li>
+      </ul>
+
+      <div class="text-center">
+        <a href="" id="send" class="btn" style="margin-bottom: 0.5rem;">
+          Αποστολή SMS
+        </a>
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <p class="text-muted text-center">
+      <small>ΠΡΟΣΟΧΗ: Όλα τα στοιχεία αποθηκεύονται αποκλειτικά και μόνο στη συσκευή σας.</small>
+    </p>
+    <p class="text-muted text-center">
+      <small>Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs" target="_blank" rel="noopener noreferrer">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener noreferrer">www.flaticon.com</a></small>
+    </p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "short_name": "Αίτηση Κίνησης",
+  "name": "Αίτηση Κίνησης",
+  "icons": [
+    {
+      "src":"favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "display": "fullscreen"
+}
