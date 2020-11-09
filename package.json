@@ -1,0 +1,23 @@
+{
+  "name": "lockdown-movement-application",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "lint": "eslint service-worker.js scripts/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georapbox/lockdown-movement-application.git"
+  },
+  "keywords": [],
+  "author": "George Raptis <georapbox@gmail.com>",
+  "license": "(MIT)",
+  "bugs": {
+    "url": "https://github.com/georapbox/lockdown-movement-application/issues"
+  },
+  "homepage": "https://github.com/georapbox/lockdown-movement-application#readme",
+  "dependencies": {
+    "eslint": "~7.13.0"
+  },
+  "devDependencies": {}
+}
