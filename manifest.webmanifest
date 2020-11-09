@@ -33,7 +33,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/?utm_source=homescreen",
+  "start_url": "/?homescreen=1",
+  "scope": "/",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "display": "standalone"
