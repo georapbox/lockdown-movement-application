@@ -59,6 +59,7 @@ footer {
   padding: 0.6rem;
   border-radius: 50rem;
   font-size: 0.9rem;
+  -webkit-appearance: none;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
@@ -77,6 +78,8 @@ a.btn,
   border-radius: 50rem;
   cursor: pointer;
   text-decoration: none;
+  -webkit-appearance: none;
+  font-size: 0.9rem;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
