@@ -8,7 +8,7 @@
   var reason = form.elements['reason'];
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
   var isAndroid = /android/i.test(userAgent);
-  var isIOS = /iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isIOS = /iPad|iPhone/.test(userAgent);
 
   try {
     fullName.value = localStorage.getItem('fullName');
