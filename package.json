@@ -1,7 +1,7 @@
 {
   "name": "lockdown-movement-application",
   "version": "1.0.0",
-  "description": "",
+  "description": "Mini PWA to easily send SMS to 13033 with movement reason, name and address.",
   "scripts": {
     "lint": "eslint service-worker.js scripts/**/*.js"
   },
