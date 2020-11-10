@@ -28,8 +28,7 @@
       return alert('Η εφαρμογή δουλεύει μόνο σε κινητά τηλέφωνα Android και iOS.');
     }
 
-    var prefix = isAndroid ? '?' : '&';
-    var smsPath = 'sms://' + SMS_NUMBER + '/' + prefix + 'body=';
+    var smsPath = isAndroid ? 'sms:' + SMS_NUMBER + '?body=' : 'sms://' + SMS_NUMBER + '&body=';
     var smsBody = encodeURIComponent(reason.value + ' ' + fullName.value + ' ' + address.value);
     var link = smsPath + smsBody;
     var anchor = document.createElement('a');
