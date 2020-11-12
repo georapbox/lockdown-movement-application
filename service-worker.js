@@ -1,4 +1,4 @@
-const version = '1.0.1';
+const version = '1.0.2';
 const cacheName = `movement-application-${version}`;
 
 self.addEventListener('install', event => {
@@ -8,7 +8,8 @@ self.addEventListener('install', event => {
         './',
         './index.html',
         './styles/main.css',
-        './scripts/main.js'
+        './scripts/main.js',
+        './img/icons/share.svg'
       ])
         .then(() => self.skipWaiting())
         .catch(err => console.error(err));

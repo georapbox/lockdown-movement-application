@@ -2,6 +2,7 @@
   'use strict';
 
   var SMS_NUMBER = 13033;
+  var shareButton = document.getElementById('share-btn');
   var form = document.forms['application-form'];
   var fullName = form.elements['fullName'];
   var address = form.elements['address'];
@@ -50,6 +51,20 @@
       // fail silently
     }
   });
+
+  if (navigator.share) {
+    shareButton.style.display = 'block';
+
+    shareButton.addEventListener('click', function () {
+      navigator.share({
+        title: document.title,
+        text: document.querySelector('meta[name="description"]').content,
+        url: document.location.href
+      })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+    }, false);
+  }
 
   if('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./service-worker.js').catch(function (err) {
