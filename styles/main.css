@@ -74,11 +74,22 @@ footer {
 .form-control {
   width: 100%;
   border: 1px solid #dee2e6;
-  padding: 0.6rem;
+  padding: 0.6rem 0.6rem 0.6rem 2rem;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 20px;
   border-radius: 50rem;
   font-size: 0.9rem;
   -webkit-appearance: none;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input[name="fullName"] {
+  background-image: url(../img/icons/person.svg);
+}
+
+input[name="address"] {
+  background-image: url(../img/icons/location.svg);
 }
 
 .form-control:focus {

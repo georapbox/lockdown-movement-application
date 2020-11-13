@@ -17,6 +17,8 @@ self.addEventListener('install', event => {
         './img/icons/run.svg',
         './img/icons/support.svg',
         './img/icons/send.svg',
+        './img/icons/person.svg',
+        './img/icons/location.svg'
       ])
         .then(() => self.skipWaiting())
         .catch(err => console.error(err));
