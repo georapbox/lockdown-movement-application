@@ -11,6 +11,10 @@ body {
   overflow-x: hidden;
 }
 
+small {
+  font-size: 75%;
+}
+
 a,
 a:visited {
   color: #007bff;
