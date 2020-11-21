@@ -9,16 +9,7 @@ self.addEventListener('install', event => {
         './index.html',
         './styles/main.css',
         './scripts/main.js',
-        './img/icons/share.svg',
-        './img/icons/bank.svg',
-        './img/icons/cake.svg',
-        './img/icons/cart.svg',
-        './img/icons/pharmacy.svg',
-        './img/icons/run.svg',
-        './img/icons/support.svg',
-        './img/icons/send.svg',
-        './img/icons/person.svg',
-        './img/icons/location.svg'
+        './img/icons/send.svg'
       ])
         .then(() => self.skipWaiting())
         .catch(err => console.error(err));
