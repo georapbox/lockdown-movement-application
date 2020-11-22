@@ -3,6 +3,7 @@
 
   var SMS_NUMBER = 13033;
   var shareButton = document.getElementById('share-btn');
+  var themeSliderEl = document.getElementById('theme-slider');
   var form = document.forms['application-form'];
   var fullName = form.elements['fullName'];
   var address = form.elements['address'];
@@ -10,6 +11,29 @@
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
   var isAndroid = /android/i.test(userAgent);
   var isIOS = /iPad|iPhone/.test(userAgent);
+  var theme = localStorage.getItem('theme') || 'theme-light';
+
+  function setTheme(themeName) {
+    theme = themeName;
+    document.documentElement.className = themeName;
+
+    try {
+      localStorage.setItem('theme', themeName);
+    } catch (err) {
+      // fail silently
+    }
+  }
+
+  function toggleTheme() {
+    if (theme === 'theme-dark') {
+      setTheme('theme-light');
+    } else {
+      setTheme('theme-dark');
+    }
+  }
+
+  document.body.classList.add('js');
+  document.querySelector('[type="submit"]').disabled = false;
 
   try {
     fullName.value = localStorage.getItem('fullName');
@@ -65,6 +89,20 @@
         .catch((error) => console.log('Error sharing', error));
     }, false);
   }
+
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+    setTheme('theme-dark');
+  }
+
+  if (theme === 'theme-dark') {
+    setTheme('theme-dark');
+    themeSliderEl.checked = true;
+  } else {
+    setTheme('theme-light');
+    themeSliderEl.checked = false;
+  }
+
+  themeSliderEl.addEventListener('change', toggleTheme);
 
   if('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./service-worker.js').catch(function (err) {
