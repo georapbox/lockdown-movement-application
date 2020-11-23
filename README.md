@@ -1,6 +1,6 @@
 # lockdown-movement-application (Αίτηση Κίνησης)
 
-Mini PWA to easily send SMS to **13033** with movement reason, name and address.
+A Progressive Web Application to easily send SMS to **13033** with movement reason, name and address during the lockdown period in Greece.
 
 App link: https://georapbox.github.io/lockdown-movement-application
 
