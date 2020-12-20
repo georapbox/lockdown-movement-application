@@ -85,13 +85,13 @@ self.addEventListener('fetch', function (event) {
       function unableToResolve() {
         isLocalEnv && console.log('WORKER: fetch request failed in both cache and network.');
 
-        return new Response('<h1>Service Unavailable</h1>', {
-          status: 503,
-          statusText: 'Service Unavailable',
-          headers: new Headers({
-            'Content-Type': 'text/html'
-          })
-        });
+        // return new Response('<h1>Service Unavailable</h1>', {
+        //   status: 503,
+        //   statusText: 'Service Unavailable',
+        //   headers: new Headers({
+        //     'Content-Type': 'text/html'
+        //   })
+        // });
       }
 
       networked = fetch(event.request)
