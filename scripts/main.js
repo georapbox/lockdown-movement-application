@@ -1,6 +1,17 @@
 (function () {
   'use strict';
 
+  var hostname = window.location.hostname;
+  var isLocalEnv = hostname === '127.0.0.1' || hostname === 'localhost';
+  var REPOSITORY = 'lockdown-movement-application'; // Github repository name, also the directory name when hosted as Github page
+  var serviceWorkerPath = isLocalEnv ? '/sw.js' : '/' + REPOSITORY + '/sw.js';
+
+  if('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(serviceWorkerPath).catch(function (err) {
+      console.error(err);
+    });
+  }
+
   var SMS_NUMBER = 13033;
   var shareButton = document.getElementById('share-btn');
   var themeSliderEl = document.getElementById('theme-slider');
@@ -103,10 +114,4 @@
   }
 
   themeSliderEl.addEventListener('change', toggleTheme);
-
-  if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js').catch(function (err) {
-      console.error(err);
-    });
-  }
 }());
