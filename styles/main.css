@@ -1,4 +1,7 @@
 :root {
+  --header-height: 50px;
+  --footer-height: 55px;
+
   --dark: #1f2229;
   --light: #e5e5e6;
   --blue: #007bff;
@@ -53,6 +56,8 @@ body {
   color: var(--txt-color);
   background-color: var(--bg-color);
   transition: background-color 0.15s ease-in-out;
+  margin: var(--header-height) 0 var(--footer-height) 0;
+  padding: 1.5rem 1rem;
 }
 
 small {
@@ -78,7 +83,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: var(--header-height);
   background-color: #ffffff;
   background-color: var(--header-bg-color);
   text-align: center;
@@ -95,8 +100,8 @@ header h1 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 50px;
-  height: 50px;
+  width: var(--header-height);
+  height: var(--header-height);
   -webkit-appearance: none;
   background-color: transparent;
   border: none;
@@ -110,15 +115,6 @@ header h1 {
 #share-btn:focus,
 #share-btn:active {
   outline: none;
-}
-
-section {
-  margin-top: 50px;
-  padding: 1.5rem 1rem;
-}
-
-footer {
-  padding: 0 1rem 1.5rem 1rem;
 }
 
 .form-group {
@@ -160,13 +156,23 @@ footer {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+.send-btn-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--footer-height);
+  background-color: var(--bg-color);
+  box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
 .send-btn {
+  width: 100%;
+  height: 100%;
   background-color: var(--btn-color);
   color: #ffffff;
   padding: 0.9rem 1rem 0.9rem 1.25rem;
-  margin-bottom: 0.5rem;
   border: 1px solid var(--btn-border-color);
-  border-radius: 50rem;
   cursor: pointer;
   text-decoration: none;
   -webkit-appearance: none;
@@ -175,7 +181,7 @@ footer {
 }
 
 button.send-btn:disabled {
-  opacity: 0.75;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 

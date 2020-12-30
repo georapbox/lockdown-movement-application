@@ -6,7 +6,7 @@
   var REPOSITORY = 'lockdown-movement-application'; // Github repository name, also the directory name when hosted as Github page
   var serviceWorkerPath = isLocalEnv ? '/sw.js' : '/' + REPOSITORY + '/sw.js';
 
-  if('serviceWorker' in navigator) {
+  if('serviceWorker' in navigator && !isLocalEnv) {
     navigator.serviceWorker.register(serviceWorkerPath).catch(function (err) {
       console.error(err);
     });
