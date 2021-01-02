@@ -16,9 +16,9 @@
   var shareButton = document.getElementById('share-btn');
   var themeSliderEl = document.getElementById('theme-slider');
   var form = document.forms['application-form'];
-  var fullName = form.elements['fullName'];
-  var address = form.elements['address'];
-  var reason = form.elements['reason'];
+  var fullNameInput = form.elements['fullName'];
+  var addressInput = form.elements['address'];
+  var reasonRadios = form.elements['reason'];
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
   var isAndroid = /android/i.test(userAgent);
   var isIOS = /iPad|iPhone/.test(userAgent);
@@ -47,8 +47,8 @@
   document.querySelector('[type="submit"]').disabled = false;
 
   try {
-    fullName.value = localStorage.getItem('fullName');
-    address.value = localStorage.getItem('address');
+    fullNameInput.value = localStorage.getItem('fullName');
+    addressInput.value = localStorage.getItem('address');
   } catch (err) {
     // fail silently
   }
@@ -56,7 +56,7 @@
   form.addEventListener('submit', function onSubmit (evt) {
     evt.preventDefault();
 
-    if (!fullName.value || !address.value || !reason.value) {
+    if (!fullNameInput.value || !addressInput.value || !reasonRadios.value) {
       return alert('Όλα τα πεδία είναι υποχρεωτικά.');
     }
 
@@ -65,13 +65,17 @@
     }
 
     var smsPath = isAndroid ? 'sms:' + SMS_NUMBER + '?body=' : 'sms://' + SMS_NUMBER + '&body=';
-    var smsBody = encodeURIComponent(reason.value + ' ' + fullName.value + ' ' + address.value);
+    var smsBody = encodeURIComponent(reasonRadios.value + ' ' + fullNameInput.value + ' ' + addressInput.value);
     var link = smsPath + smsBody;
     var anchor = document.createElement('a');
 
     anchor.href = link;
     anchor.click();
     anchor = null;
+
+    Array.prototype.forEach.call(reasonRadios, function (el) {
+      el.checked = false;
+    });
   });
 
   form.addEventListener('change', function onChange (evt) {
@@ -80,8 +84,8 @@
     }
 
     try {
-      localStorage.setItem('fullName', fullName.value);
-      localStorage.setItem('address', address.value);
+      localStorage.setItem('fullName', fullNameInput.value);
+      localStorage.setItem('address', addressInput.value);
     } catch (err) {
       // fail silently
     }

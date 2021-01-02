@@ -345,3 +345,7 @@ button.send-btn:disabled {
 .theme-switch .slider.round:before {
   border-radius: 50%;
 }
+
+.d-none {
+  display: none !important;
+}
