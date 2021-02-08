@@ -220,8 +220,10 @@ button.send-btn:disabled {
   align-items: flex-start;
   padding: 1rem 0.5rem;
   border: 1px solid transparent;
+  border-radius: 0.25rem;
   font-size: 0.95rem;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 123, 255, 0.15);
 }
 
 .list-group li input {
@@ -231,7 +233,6 @@ button.send-btn:disabled {
 
 .list-group li input[type=radio]:checked+label {
   background-color: rgba(0, 123, 255, 0.15);
-  border-radius: 0.25rem;
   border-color: var(--label-border-color);
 }
 
