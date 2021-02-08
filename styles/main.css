@@ -259,6 +259,22 @@ button.send-btn:disabled {
   border-color: #f5c6cb;
 }
 
+.alert-js-disabled {
+  animation-name: js-banner-anim;
+  animation-duration: 0.5s;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes js-banner-anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .js .alert-js-disabled {
   display: none;
 }
