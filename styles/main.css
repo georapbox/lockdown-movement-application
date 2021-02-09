@@ -95,6 +95,22 @@ header h1 {
   font-size: 1.1rem;
 }
 
+.btn-icon {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-icon svg .fill {
+  fill: var(--txt-color);
+}
+
+.btn-icon:focus,
+.btn-icon:active {
+  outline: none;
+}
+
 #share-btn {
   display: none;
   position: absolute;
@@ -102,19 +118,6 @@ header h1 {
   left: 0;
   width: var(--header-height);
   height: var(--header-height);
-  -webkit-appearance: none;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-#share-btn svg .fill {
-  fill: var(--txt-color);
-}
-
-#share-btn:focus,
-#share-btn:active {
-  outline: none;
 }
 
 .form-group {
@@ -366,4 +369,10 @@ button.send-btn:disabled {
 
 .d-none {
   display: none !important;
+}
+
+@media screen and (max-width: 360px) {
+  header h1 {
+    font-size: 1rem;
+  }
 }
