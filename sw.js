@@ -1,4 +1,4 @@
-var VERSION = '1.0.8';
+var VERSION = '1.0.9';
 var APP_PREFIX = 'movement-application-';
 var CACHE_NAME = APP_PREFIX + VERSION;
 var REPOSITORY = 'lockdown-movement-application';
