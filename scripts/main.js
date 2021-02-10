@@ -105,7 +105,7 @@
 
       if (!localStorage.getItem('speech_alert_closed')) {
         speechAlert.classList.remove('d-none');
-        speechAlert.querySelector('button').addEventListener('click', function (evt) {
+        speechAlert.querySelector('button').addEventListener('click', function () {
           speechAlert.classList.add('d-none');
           localStorage.setItem('speech_alert_closed', 'true');
         });
