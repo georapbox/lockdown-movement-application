@@ -58,6 +58,7 @@ body {
   transition: background-color 0.15s ease-in-out;
   margin: var(--header-height) 0 var(--footer-height) 0;
   padding: 1.5rem 1rem;
+  line-height: 1.5;
 }
 
 small {
@@ -247,6 +248,7 @@ button.send-btn:disabled {
 }
 
 .alert {
+  position: relative;
   padding: 1rem;
   margin-bottom: 1rem;
   padding: 0.75rem 1.25rem;
@@ -257,9 +259,15 @@ button.send-btn:disabled {
 }
 
 .alert-danger {
-  color: #721c24;
+  color: #842029;
   background-color: #f8d7da;
-  border-color: #f5c6cb;
+  border-color: #f5c2c7;
+}
+
+.alert-info {
+  color: #084298;
+  background-color: #cfe2ff;
+  border-color: #b6d4fe;
 }
 
 .alert-js-disabled {
@@ -267,6 +275,16 @@ button.send-btn:disabled {
   animation-duration: 0.5s;
   animation-delay: 1s;
   animation-fill-mode: backwards;
+}
+
+.alert .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0.5rem 1rem;
+  color: inherit;
+  font-size: 1.3rem;
 }
 
 @keyframes js-banner-anim {
