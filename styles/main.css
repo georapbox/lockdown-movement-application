@@ -394,3 +394,86 @@ button.send-btn:disabled {
     font-size: 1rem;
   }
 }
+
+.pulsating-circle {
+  position: relative;
+  height: 80px;
+  width: 80px;
+  background: var(--btn-color);
+  border-radius: 100%;
+  border: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin-bottom: 1.25rem;
+}
+
+.pulsating-circle:focus {
+  outline: none;
+}
+
+.pulsating-circle:before,
+.pulsating-circle:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
+  border: 1px solid var(--btn-color);
+  background-color: var(--btn-color);
+  transform-origin: center center;
+  opacity: 0;
+  box-sizing: border-box;
+}
+
+ .pulsating-circle.active:before {
+   animation: 1s 0.1s pulse2 infinite linear;
+ }
+
+ .pulsating-circle.active:after {
+   animation: 1s pulse infinite linear;
+ }
+
+ @keyframes pulse {
+   0% {
+     transform: scale(1.3);
+     opacity: 0.2;
+   }
+
+   100% {
+     transform: scale(1.5);
+     opacity: 0;
+   }
+ }
+
+ @keyframes pulse2 {
+   0% {
+     transform: scale(1.1);
+     opacity: 0.5;
+   }
+
+   100% {
+     transform: scale(1.3);
+     opacity: 0;
+   }
+ }
+
+/* .pulsating-circle.active:before {
+  animation: 1s 0.1s pulse infinite linear;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+} */

@@ -1,7 +1,6 @@
 (function () {
   'use strict';
 
-  var firstLoadTimestamp = Date.now();
   var hostname = window.location.hostname;
   var isLocalEnv = hostname === '127.0.0.1' || hostname === 'localhost';
   var REPOSITORY = 'lockdown-movement-application'; // Github repository name, also the directory name when hosted as Github page
@@ -9,6 +8,7 @@
   var SMS_NUMBER = 13033;
   var shareButton = document.getElementById('share-btn');
   var speechAlert = document.getElementById('speech-alert');
+  var speechBtn = document.getElementById('speech-btn');
   var themeSliderEl = document.getElementById('theme-slider');
   var form = document.forms['application-form'];
   var fullNameInput = form.elements['fullName'];
@@ -64,7 +64,17 @@
       speechRecognition.interimResults = false;
       speechRecognition.continuous = false;
       speechRecognition.maxAlternatives = 5;
-      speechRecognition.start();
+
+      speechBtn.parentElement.classList.remove('d-none');
+
+      speechBtn.addEventListener('click', function () {
+        try {
+          speechRecognition.start();
+          speechBtn.classList.add('active');
+        } catch (e) {
+          logger.error(e);
+        }
+      });
 
       speechRecognition.onresult = function onRecognitionResult(evt) {
         console.log(evt);
@@ -81,13 +91,11 @@
 
         for (var i = 0; i < resultsList.length; i++) {
           logger.info(resultsList[i]);
-          document.getElementById('debug').innerHTML += `${resultsList[i].transcript}<br/>`;
 
           for (var key = 1; key <= Object.keys(mapReasonValueToSpeechValues).length; key++) {
             if (mapReasonValueToSpeechValues[key].indexOf(resultsList[i].transcript.toLowerCase()) > -1) {
               reasonRadios.value = key;
               document.querySelector('[type="submit"]').click();
-              document.getElementById('debug').innerHTML += `<span style="color: green;">FOUND</span><br/>`;
               found = true;
               break;
             }
@@ -100,13 +108,12 @@
       };
 
       speechRecognition.onend = function onRecognitionEnd() {
-        if (Date.now() - firstLoadTimestamp < 5 * 60 * 1000) { // Restart for 5 minutes
-          speechRecognition.start();
-        }
+        speechBtn.classList.remove('active');
       };
 
       if (!localStorage.getItem('speech_alert_closed')) {
         speechAlert.classList.remove('d-none');
+
         speechAlert.querySelector('button').addEventListener('click', function () {
           speechAlert.classList.add('d-none');
           localStorage.setItem('speech_alert_closed', 'true');
