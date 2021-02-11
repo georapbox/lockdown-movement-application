@@ -81,11 +81,13 @@
 
         for (var i = 0; i < resultsList.length; i++) {
           logger.info(resultsList[i]);
+          document.getElementById('debug').innerHTML += `${resultsList[i].transcript}<br/>`;
 
           for (var key = 1; key <= Object.keys(mapReasonValueToSpeechValues).length; key++) {
             if (mapReasonValueToSpeechValues[key].indexOf(resultsList[i].transcript.toLowerCase()) > -1) {
               reasonRadios.value = key;
               document.querySelector('[type="submit"]').click();
+              document.getElementById('debug').innerHTML += `<span style="color: green;">FOUND</span><br/>`;
               found = true;
               break;
             }
