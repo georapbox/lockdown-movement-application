@@ -7,7 +7,6 @@
   var serviceWorkerPath = isLocalEnv ? '/sw.js' : '/' + REPOSITORY + '/sw.js';
   var SMS_NUMBER = 13033;
   var shareButton = document.getElementById('share-btn');
-  var speechAlert = document.getElementById('speech-alert');
   var speechBtn = document.getElementById('speech-btn');
   var themeSliderEl = document.getElementById('theme-slider');
   var form = document.forms['application-form'];
@@ -57,6 +56,7 @@
     }
   }
 
+  // eslint-disable-next-line no-unused-vars
   function initialiseSpeechRecognition() {
     try {
       speechRecognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -110,15 +110,6 @@
       speechRecognition.onend = function onRecognitionEnd() {
         speechBtn.classList.remove('active');
       };
-
-      if (!localStorage.getItem('speech_alert_closed')) {
-        speechAlert.classList.remove('d-none');
-
-        speechAlert.querySelector('button').addEventListener('click', function () {
-          speechAlert.classList.add('d-none');
-          localStorage.setItem('speech_alert_closed', 'true');
-        });
-      }
     } catch (err) {
       logger.error('Speech recognition API might not be supported.');
       logger.error(err);
@@ -199,14 +190,4 @@
   }
 
   themeSliderEl.addEventListener('change', toggleTheme);
-
-  var _counter = 0;
-
-  document.querySelector('h1').addEventListener('click', function () {
-    if (_counter === 10) {
-      initialiseSpeechRecognition();
-    }
-
-    _counter += 1;
-  });
 }());
